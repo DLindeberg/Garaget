@@ -52,6 +52,7 @@ namespace Garaget
 
             if (VehicleList.Count < 10)
             {
+                Console.Clear();
                 Console.WriteLine("Please choose one of the following: ");
                 Console.WriteLine("1. Car");
                 Console.WriteLine("2. Bus");
@@ -167,7 +168,8 @@ namespace Garaget
                         Console.WriteLine("wat?");
                         break;
                 }
-
+                Console.Clear();
+                Console.WriteLine("Vehicle successfully added!");
                 VehicleList.Add(v);
             }
             else
@@ -178,15 +180,41 @@ namespace Garaget
 
         public void RemoveVehicle() //Riley
         {
-            Console.WriteLine("Please enter a RegNr: ");
-            string regnr = Console.ReadLine().ToUpper();
-            while (!VehicleList.Any(x => x.Regnr == regnr))
+            if (VehicleList.Count > 0)
             {
-                Console.WriteLine("Sorry, we don't have that vehicle registered. Please try again.");
-                Console.Write("Please enter a RegNr: ");
-                regnr = Console.ReadLine();
+                Console.Clear();
+                Console.WriteLine("Please enter a RegNr: ");
+                string regnr = Console.ReadLine().ToUpper();
+                while (!VehicleList.Any(x => x.Regnr == regnr))
+                {
+                    Console.WriteLine("Sorry, we don't have that vehicle registered, would you like to try again? (Y/N)");
+                    var option = Console.ReadLine().ToUpper();
+                    if (option == "Y")
+                    {
+                        Console.Write("Please enter a RegNr: ");
+                        regnr = Console.ReadLine().ToUpper();
+                    }
+                    else if (option == "N")
+                    {
+                        Console.Clear();
+                        return;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Please answer with Y or N.");
+                    }
+                    
+                }
+                Console.Clear();
+                VehicleList.Remove(VehicleList.Where(x => x.Regnr == regnr).First());
+                Console.WriteLine("Vehicle succesfully removed!");
             }
-            VehicleList.Remove(VehicleList.Where(x => x.Regnr == regnr).First());
+            else
+            {
+                Console.Clear();
+                Console.WriteLine("There are no vehicles stored in the garage.");
+            }
+            
         }
 
         public Vehicle SearchVehicle() //Daniel
