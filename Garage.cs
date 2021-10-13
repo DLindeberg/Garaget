@@ -14,36 +14,25 @@ namespace Garaget
         public Garage()
         {
             VehicleList = new List<Vehicle>();
-
-            Moped v1 = new Moped
-            {
-                Color = "Red",
-                Regnr = "ABC123",
-                Wheels = 4,
-                Type = "Moped",
-                Model = "Yahama Aerox",
-                Passengers = 2
-            };
-            Truck v2 = new Truck
-            {
-                Color = "Blue",
-                Regnr = "CBA321",
-                Wheels = 6,
-                Type = "Truck",
-                Model = "Volvo",
-                Passengers = 3
-            };
-
-            VehicleList.Add(v1);
-            VehicleList.Add(v2);
         }
 
         public void ListVehicle() //Daniel
         {
-            Console.Clear();
-            foreach (var v in VehicleList)
+            if (VehicleList == null)
             {
-                v.Print();
+                Console.WriteLine("Garage is empty");
+            }
+            else if (VehicleList.Count == 0)
+            {
+                Console.WriteLine("Garage is empty");
+            }
+            else
+            {
+                Console.Clear();
+                foreach (var v in VehicleList)
+                {
+                    v.Print();
+                }
             }
         }
 
