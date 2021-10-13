@@ -20,10 +20,12 @@ namespace Garaget
         {
             if (VehicleList == null)
             {
+                Console.Clear();
                 Console.WriteLine("Garage is empty");
             }
             else if (VehicleList.Count == 0)
             {
+                Console.Clear();
                 Console.WriteLine("Garage is empty");
             }
             else
@@ -190,7 +192,7 @@ namespace Garaget
         public Vehicle SearchVehicle() //Daniel
         {
             Console.Clear();
-            Console.WriteLine("Please enter a registration number: (Format: ABC123 or ABC12A)\n");
+            Console.WriteLine("Please enter a registration number: \n");
 
             string userInput = Console.ReadLine().ToUpper();
             foreach (var reg in VehicleList)

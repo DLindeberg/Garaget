@@ -64,7 +64,7 @@ namespace Garaget
             if (vehicleObject == null)
             {
                 Console.Clear();
-                Console.WriteLine("Vehicle not found. Make sure you use the correct format (ABC123).\n");
+                Console.WriteLine("Vehicle not found.\n");
             }
             else
             {
