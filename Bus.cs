@@ -4,9 +4,9 @@ namespace Garaget
 {
     public class Bus : Vehicle 
     {
-        public string Type { get; set; }
         public string Model { get; set; }
-        public int Passengers { get; set; }
+        public int Length { get; set; }
+
         override public void Print()
         {
             base.Print();
