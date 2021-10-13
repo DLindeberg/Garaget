@@ -47,123 +47,131 @@ namespace Garaget
 
         public void AddVehicle() //Riley
         {
-            Console.WriteLine("Please choose one of the following: ");
-            Console.WriteLine("1. Car");
-            Console.WriteLine("2. Bus");
-            Console.WriteLine("3. Moped");
-            Console.WriteLine("4. Motorcycle");
-            Console.WriteLine("5. Truck");
 
-            int input;
-            while (!int.TryParse(Console.ReadLine(), out input) || input < 1 || input > 5)
+            if (VehicleList.Count < 10)
             {
-                Console.Clear();
-                Console.WriteLine("Invalid input, please try again...\n");
+                Console.WriteLine("Please choose one of the following: ");
+                Console.WriteLine("1. Car");
+                Console.WriteLine("2. Bus");
+                Console.WriteLine("3. Moped");
+                Console.WriteLine("4. Motorcycle");
+                Console.WriteLine("5. Truck");
+
+                int input;
+                while (!int.TryParse(Console.ReadLine(), out input) || input < 1 || input > 5)
+                {
+                    Console.Clear();
+                    Console.WriteLine("Invalid input, please try again...\n");
+                }
+
+                Vehicle v = null;
+
+                Console.WriteLine("Color: ");
+                string color = Console.ReadLine();
+
+                Console.WriteLine("RegNr: ");
+                string regnr = Console.ReadLine().ToUpper();
+                while (VehicleList.Any(x => x.Regnr == regnr))
+                {
+                    Console.WriteLine("Sorry, that vehicle is already registered. Please try a different RegNr");
+                    Console.Write("RegNr: ");
+                    regnr = Console.ReadLine().ToUpper();
+                }
+
+                Console.WriteLine("Model: ");
+                string model = Console.ReadLine();
+
+                Console.WriteLine("Passangers: ");
+                int passengers = Helper.IntValidator();
+
+
+                switch (input)
+                {
+                    case 1:
+                        Console.WriteLine("Is this a combi?");
+                        var isCombi = Helper.BoolValidator();
+                        v = new Car
+                        {
+                            Passengers = passengers,
+                            Color = color,
+                            Model = model,
+                            Regnr = regnr,
+                            Type = "Car",
+                            Wheels = 4,
+                            Combi = isCombi,
+                        };
+                        break;
+
+                    case 2:
+                        Console.WriteLine("Length (m): ");
+                        int length = Helper.IntValidator();
+                        v = new Bus
+                        {
+                            Color = color,
+                            Regnr = regnr,
+                            Model = model,
+                            Passengers = passengers,
+                            Length = length,
+                            Type = "Bus",
+                            Wheels = 10
+                        };
+                        break;
+
+                    case 3:
+                        v = new Moped
+                        {
+                            Color = color,
+                            Regnr = regnr,
+                            Model = model,
+                            Passengers = passengers,
+                            Trimmed = Helper.BoolValidator(),
+                            Type = "Moped",
+                            Wheels = 2
+                        };
+                        break;
+
+                    case 4:
+                        Console.WriteLine("Exhaust brand: ");
+                        string exhaustbrand = Console.ReadLine();
+                        v = new Motorcycle
+                        {
+                            Color = color,
+                            Regnr = regnr,
+                            Model = model,
+                            Passengers = passengers,
+                            ExhaustBrand = exhaustbrand,
+                            Type = "Motorcycle",
+                            Wheels = 2
+                        };
+                        break;
+
+                    case 5:
+                        Console.WriteLine("Does this truck have a trailer?");
+                        var hasTrailer = Helper.BoolValidator();
+
+                        v = new Truck
+                        {
+                            Color = color,
+                            Regnr = regnr,
+                            Model = model,
+                            Passengers = passengers,
+                            Trailer = hasTrailer,
+                            Wheels = 10,
+                            Type = "Truck"
+                        };
+                        break;
+
+                    default:
+                        Console.WriteLine("wat?");
+                        break;
+                }
+
+                VehicleList.Add(v);
             }
-
-            Vehicle v = null;
-
-            Console.WriteLine("Color: ");
-            string color = Console.ReadLine();
-
-            Console.WriteLine("RegNr: ");
-            string regnr = Console.ReadLine().ToUpper();
-            while (VehicleList.Any(x => x.Regnr == regnr))
+            else
             {
-                Console.WriteLine("Sorry, that vehicle is already registered. Please try a different RegNr");
-                Console.Write("RegNr: ");
-                regnr = Console.ReadLine().ToUpper();
+                Console.WriteLine("Sorry, the garage is full.");
             }
-
-            Console.WriteLine("Model: ");
-            string model = Console.ReadLine();
-
-            Console.WriteLine("Passangers: ");
-            int passengers = Helper.IntValidator();
-
-
-            switch (input)
-            {
-                case 1:
-                    Console.WriteLine("Is this a combi?");
-                    var isCombi = Helper.BoolValidator();
-                    v = new Car
-                    {
-                        Passengers = passengers,
-                        Color = color,
-                        Model = model,
-                        Regnr = regnr,
-                        Type = "Car",
-                        Wheels = 4,
-                        Combi = isCombi,
-                    };
-                    break;
-
-                case 2:
-                    Console.WriteLine("Length (m): ");
-                    int length = Helper.IntValidator();
-                    v = new Bus
-                    {
-                        Color = color,
-                        Regnr = regnr,
-                        Model = model,
-                        Passengers = passengers,
-                        Length = length,
-                        Type = "Bus",
-                        Wheels = 10
-                    };
-                    break;
-
-                case 3:
-                    v = new Moped
-                    {
-                        Color = color,
-                        Regnr = regnr,
-                        Model = model,
-                        Passengers = passengers,
-                        Trimmed = Helper.BoolValidator(),
-                        Type = "Moped",
-                        Wheels = 2
-                    };
-                    break;
-
-                case 4:
-                    Console.WriteLine("Exhaust brand: ");
-                    string exhaustbrand = Console.ReadLine();
-                    v = new Motorcycle
-                    {
-                        Color = color,
-                        Regnr = regnr,
-                        Model = model,
-                        Passengers = passengers,
-                        ExhaustBrand = exhaustbrand,
-                        Type = "Motorcycle",
-                        Wheels = 2
-                    };
-                    break;
-
-                case 5:
-                    Console.WriteLine("Does this truck have a trailer?");
-                    var hasTrailer = Helper.BoolValidator();
-
-                    v = new Truck
-                    {
-                        Color = color,
-                        Regnr = regnr,
-                        Model = model,
-                        Passengers = passengers,
-                        Trailer = hasTrailer,
-                        Wheels = 10,
-                        Type = "Truck"
-                    };
-                    break;
-
-                default:
-                    Console.WriteLine("wat?");
-                    break;
-            }
-
-            VehicleList.Add(v);
         }
 
         public void RemoveVehicle() //Riley
