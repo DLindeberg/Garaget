@@ -40,10 +40,23 @@ namespace Garaget
 
         public void ListTypeVehicle() //Riley
         {
-            Console.Clear();
-            foreach (var v in VehicleList)
+            if (VehicleList == null)
             {
-                Console.WriteLine(v.Type);
+                Console.Clear();
+                Console.WriteLine("Garage is empty.\n");
+            }
+            else if (VehicleList.Count == 0)
+            {
+                Console.Clear();
+                Console.WriteLine("Garage is empty.\n");
+            }
+            else
+            {
+                Console.Clear();
+                foreach (var v in VehicleList)
+                {
+                    Console.WriteLine(v.Type);
+                }
             }
         }
 
@@ -54,19 +67,14 @@ namespace Garaget
             {
                 Console.Clear();
                 Console.WriteLine("Please choose one of the following: \n");
-                Console.WriteLine("----------------");
-                Console.WriteLine("1. Car");
-                Console.WriteLine("2. Bus");
-                Console.WriteLine("3. Moped");
-                Console.WriteLine("4. Motorcycle");
-                Console.WriteLine("5. Truck");
-                Console.WriteLine("----------------");
+                Helper.AddVehicleAlternatives();
 
                 int input;
                 while (!int.TryParse(Console.ReadLine(), out input) || input < 1 || input > 5)
                 {
                     Console.Clear();
                     Console.WriteLine("Invalid input, please try again...\n");
+                    Helper.AddVehicleAlternatives();
                 }
 
                 Vehicle v = null;

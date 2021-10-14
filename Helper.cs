@@ -76,5 +76,15 @@ namespace Garaget
                     "8. Exit program\n" +
                     "-----------------------------");
         }
+        public static void AddVehicleAlternatives()
+        {
+            Console.WriteLine("----------------");
+            Console.WriteLine("1. Car");
+            Console.WriteLine("2. Bus");
+            Console.WriteLine("3. Moped");
+            Console.WriteLine("4. Motorcycle");
+            Console.WriteLine("5. Truck");
+            Console.WriteLine("----------------");
+        }
     }
 }
