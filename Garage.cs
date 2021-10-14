@@ -90,7 +90,8 @@ namespace Garaget
                 {
                     Console.WriteLine("Sorry, that vehicle is already registered. Please try a different RegNr");
                     Console.Write("RegNr: ");
-                    regnr = Console.ReadLine().ToUpper();
+                    regnr = Helper.StringValidator(Console.ReadLine().ToUpper());
+                    regnr = regnr.ToUpper();
                 }
 
                 Console.WriteLine("Model: ");
