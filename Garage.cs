@@ -80,10 +80,12 @@ namespace Garaget
                 Vehicle v = null;
 
                 Console.WriteLine("Color: ");
-                string color = Console.ReadLine();
+                string color = Helper.StringValidator(Console.ReadLine());
+
 
                 Console.WriteLine("RegNr: ");
-                string regnr = Console.ReadLine().ToUpper();
+                string regnr = Helper.StringValidator(Console.ReadLine().ToUpper());
+                regnr = regnr.ToUpper();
                 while (VehicleList.Any(x => x.Regnr == regnr))
                 {
                     Console.WriteLine("Sorry, that vehicle is already registered. Please try a different RegNr");
@@ -92,7 +94,7 @@ namespace Garaget
                 }
 
                 Console.WriteLine("Model: ");
-                string model = Console.ReadLine();
+                string model = Helper.StringValidator(Console.ReadLine());
 
                 Console.WriteLine("Passengers: ");
                 int passengers = Helper.IntValidator();
@@ -148,7 +150,7 @@ namespace Garaget
 
                     case 4:
                         Console.WriteLine("Exhaust brand: ");
-                        string exhaustbrand = Console.ReadLine();
+                        string exhaustbrand = Helper.StringValidator(Console.ReadLine());
                         v = new Motorcycle
                         {
                             Color = color,

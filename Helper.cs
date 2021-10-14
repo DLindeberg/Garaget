@@ -86,5 +86,15 @@ namespace Garaget
             Console.WriteLine("5. Truck");
             Console.WriteLine("----------------");
         }
+        public static string StringValidator(string input)
+        {
+            while (string.IsNullOrWhiteSpace(input))
+            {
+                Console.WriteLine("You must enter a value.\n");
+                input = Console.ReadLine();
+            }
+            return input;
+            
+        }
     }
 }
