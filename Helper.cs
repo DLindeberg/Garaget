@@ -36,5 +36,45 @@ namespace Garaget
                 }
             }
         }
+        public static int MenuInputHandler() //Daniel
+        {
+            int input;
+            while (!int.TryParse(Console.ReadLine(), out input) || input < 1 || input > 8)
+            {
+                Console.Clear();
+                Console.WriteLine("Invalid input, please try again...\n");
+                MenuAlternatives();
+                
+            }
+            return input;
+        }
+        public static void MenuSearchNullReferenceHandler(Vehicle vehicleObject) //Daniel
+        {
+            if (vehicleObject == null)
+            {
+                Console.Clear();
+                Console.WriteLine("Vehicle not found.\n");
+            }
+            else
+            {
+                Console.Clear();
+                Console.WriteLine("Vehicle found:\n");
+                vehicleObject.Print();
+            }
+        }
+        public static void MenuAlternatives() //Daniel
+        {
+            Console.WriteLine
+                    ("-----------------------------\n" +
+                    "1. Show contents of garage\n" +
+                    "2. Add vehicle\n" +
+                    "3. Remove vehicle\n" +
+                    "4. Search vehicle\n" +
+                    "5. Show vehicles\n" +
+                    "6. Save garage\n" +
+                    "7. Load garage\n" +
+                    "8. Exit program\n" +
+                    "-----------------------------");
+        }
     }
 }

@@ -21,12 +21,12 @@ namespace Garaget
             if (VehicleList == null)
             {
                 Console.Clear();
-                Console.WriteLine("Garage is empty");
+                Console.WriteLine("Garage is empty.\n");
             }
             else if (VehicleList.Count == 0)
             {
                 Console.Clear();
-                Console.WriteLine("Garage is empty");
+                Console.WriteLine("Garage is empty.\n");
             }
             else
             {
@@ -53,12 +53,14 @@ namespace Garaget
             if (VehicleList.Count < 10)
             {
                 Console.Clear();
-                Console.WriteLine("Please choose one of the following: ");
+                Console.WriteLine("Please choose one of the following: \n");
+                Console.WriteLine("----------------");
                 Console.WriteLine("1. Car");
                 Console.WriteLine("2. Bus");
                 Console.WriteLine("3. Moped");
                 Console.WriteLine("4. Motorcycle");
                 Console.WriteLine("5. Truck");
+                Console.WriteLine("----------------");
 
                 int input;
                 while (!int.TryParse(Console.ReadLine(), out input) || input < 1 || input > 5)
@@ -84,7 +86,7 @@ namespace Garaget
                 Console.WriteLine("Model: ");
                 string model = Console.ReadLine();
 
-                Console.WriteLine("Passangers: ");
+                Console.WriteLine("Passengers: ");
                 int passengers = Helper.IntValidator();
 
 
@@ -121,13 +123,16 @@ namespace Garaget
                         break;
 
                     case 3:
+                        Console.WriteLine("Is the moped trimmed?");
+                        var isTrimmed = Helper.BoolValidator();
                         v = new Moped
                         {
                             Color = color,
+
                             Regnr = regnr,
                             Model = model,
                             Passengers = passengers,
-                            Trimmed = Helper.BoolValidator(),
+                            Trimmed = isTrimmed,
                             Type = "Moped",
                             Wheels = 2
                         };
@@ -151,7 +156,6 @@ namespace Garaget
                     case 5:
                         Console.WriteLine("Does this truck have a trailer?");
                         var hasTrailer = Helper.BoolValidator();
-
                         v = new Truck
                         {
                             Color = color,
@@ -169,12 +173,12 @@ namespace Garaget
                         break;
                 }
                 Console.Clear();
-                Console.WriteLine("Vehicle successfully added!");
+                Console.WriteLine("Vehicle successfully added!\n");
                 VehicleList.Add(v);
             }
             else
             {
-                Console.WriteLine("Sorry, the garage is full.");
+                Console.WriteLine("Sorry, the garage is full.\n");
             }
         }
 
@@ -207,12 +211,12 @@ namespace Garaget
                 }
                 Console.Clear();
                 VehicleList.Remove(VehicleList.Where(x => x.Regnr == regnr).First());
-                Console.WriteLine("Vehicle succesfully removed!");
+                Console.WriteLine("Vehicle succesfully removed!\n");
             }
             else
             {
                 Console.Clear();
-                Console.WriteLine("There are no vehicles stored in the garage.");
+                Console.WriteLine("There are no vehicles stored in the garage.\n");
             }
             
         }

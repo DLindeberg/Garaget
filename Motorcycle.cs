@@ -10,7 +10,7 @@ namespace Garaget
         override public void Print()
         {
             base.Print();
-            Console.WriteLine($"Type: {Type}\nModel: {Model}\nPassengers: {Passengers}\n");
+            Console.WriteLine($"Model: {Model}\nExhaust brand: {ExhaustBrand}\n");
         }
     }
 }

@@ -12,7 +12,7 @@ namespace Garaget
 
         virtual public void Print()
         {
-            Console.WriteLine($"Regnr: {Regnr}\nColor: {Color}\nWheels: {Wheels}");
+            Console.WriteLine($"Type: {Type}\nRegnr: {Regnr}\nColor: {Color}\nWheels: {Wheels}\nPassengers: {Passengers}");
         }
     }
 }

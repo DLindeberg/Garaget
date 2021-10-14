@@ -11,8 +11,8 @@ namespace Garaget
             bool stop = true;
             do
             {
-                MenuAlternatives();
-                int input = MenuInputHandler();
+                Helper.MenuAlternatives();
+                int input = Helper.MenuInputHandler();
                 switch (input)
                 {
                     case 1:
@@ -26,7 +26,7 @@ namespace Garaget
                         break;
                     case 4:
                         Vehicle vehicle = myGarage.SearchVehicle();
-                        MenuSearchNullReferenceHandler(vehicle);
+                        Helper.MenuSearchNullReferenceHandler(vehicle);
                         break;
                     case 5:
                         myGarage.ListTypeVehicle();
@@ -44,45 +44,6 @@ namespace Garaget
                         break;
                 }
             } while (stop == true);
-        }
-        public void MenuAlternatives() //Daniel
-        {
-            Console.WriteLine
-                    ("-----------------------------\n" +
-                    "1. Show contents of garage\n" +
-                    "2. Add vehicle\n" +
-                    "3. Remove vehicle\n" +
-                    "4. Search vehicle\n" +
-                    "5. Show vehicle\n" +
-                    "6. Save garage\n" +
-                    "7. Load garage\n" +
-                    "8. Exit program\n" +
-                    "-----------------------------");
-        }
-        public void MenuSearchNullReferenceHandler(Vehicle vehicleObject) //Daniel
-        {
-            if (vehicleObject == null)
-            {
-                Console.Clear();
-                Console.WriteLine("Vehicle not found.\n");
-            }
-            else
-            {
-                Console.Clear();
-                Console.WriteLine("Vehicle found:\n");
-                vehicleObject.Print();
-            }
-        }
-        public int MenuInputHandler() //Daniel
-        {
-            int input;
-            while (!int.TryParse(Console.ReadLine(), out input) || input < 1 || input > 8)
-            {
-                Console.Clear();
-                Console.WriteLine("Invalid input, please try again...\n");
-                MenuAlternatives();
-            }
-            return input;
         }
     }
 }
