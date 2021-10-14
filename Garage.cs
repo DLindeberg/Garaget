@@ -186,6 +186,7 @@ namespace Garaget
             }
             else
             {
+                Console.Clear();
                 Console.WriteLine("Sorry, the garage is full.\n");
             }
         }
