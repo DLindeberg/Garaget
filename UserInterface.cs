@@ -25,8 +25,16 @@ namespace Garaget
                         myGarage.RemoveVehicle();
                         break;
                     case 4:
-                        Vehicle vehicle = myGarage.SearchVehicle();
-                        Helper.MenuSearchNullReferenceHandler(vehicle);
+                        int input2 = Helper.MenuSearchSubMenu();
+                        if (input2 == 1)
+                        {
+                            Vehicle vehicle = myGarage.SearchVehicleRegnr();
+                            Helper.MenuSearchNullReferenceHandler(vehicle);
+                        }
+                        else if (input2 == 2)
+                        {
+                            myGarage.SearchVehicleType();
+                        }
                         break;
                     case 5:
                         myGarage.ListTypeVehicle();

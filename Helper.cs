@@ -48,6 +48,26 @@ namespace Garaget
             }
             return input;
         }
+        public static int MenuSearchSubMenu() //Daniel
+        {
+            Console.Clear();
+            Console.WriteLine("Choose one:\n\n" + 
+                "------------------------\n" +
+                "1. Search by Reg Number\n" + 
+                "2. Search by Type\n" +
+                "------------------------\n");
+            int input;
+            while (!int.TryParse(Console.ReadLine(), out input) || input < 1 || input > 2)
+            {
+                Console.Clear();
+                Console.WriteLine("Invalid input, please try again...\n");
+                Console.WriteLine("------------------------\n" +
+                "1. Search by Reg Number\n" +
+                "2. Search by Type\n" +
+                "------------------------\n");
+            }
+            return input;
+        }
         public static void MenuSearchNullReferenceHandler(Vehicle vehicleObject) //Daniel
         {
             if (vehicleObject == null)
@@ -86,7 +106,7 @@ namespace Garaget
             Console.WriteLine("5. Truck");
             Console.WriteLine("----------------");
         }
-        public static string StringValidator(string input)
+        public static string StringValidator(string input) //Daniel
         {
             while (string.IsNullOrWhiteSpace(input))
             {

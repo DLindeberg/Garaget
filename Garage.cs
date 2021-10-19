@@ -112,7 +112,7 @@ namespace Garaget
                             Color = color,
                             Model = model,
                             Regnr = regnr,
-                            Type = "Car",
+                            Type = "CAR",
                             Wheels = 4,
                             Combi = isCombi,
                         };
@@ -128,7 +128,7 @@ namespace Garaget
                             Model = model,
                             Passengers = passengers,
                             Length = length,
-                            Type = "Bus",
+                            Type = "BUS",
                             Wheels = 10
                         };
                         break;
@@ -144,7 +144,7 @@ namespace Garaget
                             Model = model,
                             Passengers = passengers,
                             Trimmed = isTrimmed,
-                            Type = "Moped",
+                            Type = "MOPED",
                             Wheels = 2
                         };
                         break;
@@ -159,7 +159,7 @@ namespace Garaget
                             Model = model,
                             Passengers = passengers,
                             ExhaustBrand = exhaustbrand,
-                            Type = "Motorcycle",
+                            Type = "MOTORCYCLE",
                             Wheels = 2
                         };
                         break;
@@ -175,7 +175,7 @@ namespace Garaget
                             Passengers = passengers,
                             Trailer = hasTrailer,
                             Wheels = 10,
-                            Type = "Truck"
+                            Type = "TRUCK"
                         };
                         break;
 
@@ -233,7 +233,7 @@ namespace Garaget
             
         }
 
-        public Vehicle SearchVehicle() //Daniel
+        public Vehicle SearchVehicleRegnr() //Daniel
         {
             Console.Clear();
             Console.WriteLine("Please enter a registration number: \n");
@@ -247,6 +247,42 @@ namespace Garaget
                 }
             }
             return null;
+        }
+
+        public void SearchVehicleType() //Daniel
+        {
+            if (VehicleList == null)
+            {
+                Console.Clear();
+                Console.WriteLine("Garage is empty.\n");
+            }
+            else if (VehicleList.Count == 0)
+            {
+                Console.Clear();
+                Console.WriteLine("Garage is empty.\n");
+            }
+            else
+            {
+                Console.Clear();
+                Console.WriteLine("Please enter the vehicles type:");
+                string userInput = Helper.StringValidator(Console.ReadLine().ToUpper());
+                userInput = userInput.ToUpper();
+                Console.Clear();
+                int i = 0;
+                foreach (var type in VehicleList)
+                {
+                    if (type.Type == userInput)
+                    {
+                        type.Print();
+                        i++;
+                    }
+                    else if (i == 0)
+                    {
+                        Console.Clear();
+                        Console.WriteLine("Vehicle not found.\n");
+                    }
+                }
+            }
         }
 
         public void Save() //Daniel
